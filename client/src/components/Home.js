@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 // import queryString from 'query-string';
 import Header from './Header';
+import SearchBar from './SearchBar';
+import '../styles/Home.css';
 
 class Home extends Component {
   // componentDidMount() {
@@ -11,9 +13,10 @@ class Home extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className="home-container">
         <Header />
-      </Fragment>
+        <SearchBar />
+      </div>
     );
   }
 }
