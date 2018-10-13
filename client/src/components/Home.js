@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 // import queryString from 'query-string';
 import Header from './Header';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 import '../styles/Home.css';
 
 class Home extends Component {
@@ -16,6 +17,7 @@ class Home extends Component {
       <div className="home-container">
         <Header />
         <SearchBar />
+        <MovieList />
       </div>
     );
   }
