@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Limelight');
+
+.header {
+  margin: 20px auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.title {
+  width: 100%;
+  margin: 0 0 0 25px;
+  font-family: 'Limelight', cursive;
+  font-size: 3rem;
+}
