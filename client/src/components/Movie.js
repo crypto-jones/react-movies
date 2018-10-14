@@ -9,7 +9,9 @@ class Movie extends Component {
     title: [],
     releaseDate: '',
     voteAverage: null,
-    poster: null
+    poster: null,
+    runTime: null,
+    overview: ''
   };
 
   componentDidMount() {
@@ -26,7 +28,9 @@ class Movie extends Component {
           title: data.title,
           releaseDate: data.release_date,
           voteAverage: data.vote_average,
-          poster: data.poster_path
+          poster: data.poster_path,
+          runTime: data.runtime,
+          overview: data.overview
         }));
       })
       .catch(error => {
@@ -41,12 +45,27 @@ class Movie extends Component {
     return (
       <div className="movie-container">
         <h2>{this.state.title}</h2>
-        <p>{this.state.releaseDate}</p>
-        <p>{this.state.voteAverage}</p>
         <img
           src={`https://image.tmdb.org/t/p/w400/${this.state.poster}`}
           alt="Movie Poster"
+          style={{ border: '1.5px solid white' }}
         />
+        <p>
+          <span className="movie-details">Release Date:</span>{' '}
+          {this.state.releaseDate}
+        </p>
+        <p>
+          {' '}
+          <span className="movie-details">Rating: </span>{' '}
+          {this.state.voteAverage}
+        </p>
+        <p>
+          {' '}
+          <span className="movie-details">Run Time: </span> {this.state.runTime}{' '}
+          Minutes
+        </p>
+        <p className="movie-details overview">Overview</p>
+        <p className="align-left">{this.state.overview}</p>
       </div>
     );
   }

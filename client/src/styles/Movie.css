@@ -1,3 +1,18 @@
 .movie-container {
   margin: 30px auto;
+  max-width: 600px;
+}
+
+.movie-details {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.overview {
+  font-size: 1.5rem;
+}
+
+.align-left {
+  text-align: left;
+  padding: 0 10px;
 }
