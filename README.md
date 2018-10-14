@@ -1,5 +1,5 @@
 # react-movies
-This is a simple web app that displays movies from the Movie Database API.
+This is a simple web app that queries and displays movies from the Movie Database API.
 
 ## To Run The App
 
