@@ -1,19 +1,45 @@
+.movie-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
 .movie-card {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 15px;
+  margin: 20px 20px 20px 0;
   border: 1px solid white;
-  padding: 0;
+  padding: 10px;
 }
 
 .movie-text {
-  max-width: 500px;
+  width: 300px;
+  height: 200px;
   padding: 0 20px;
   text-align: left;
 }
 
 .search-bar {
-  width: 97.7%;
+  width: 50%;
+  min-width: 375px;
   font-size: 1rem;
   padding: 8px;
+  margin: 20px 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .movie-card {
+    justify-content: center;
+    padding: 0;
+    width: 325px;
+  }
+
+  .movie-title {
+    text-align: center;
+  }
+
+  .movie-text {
+    font-size: 0.8rem;
+  }
 }

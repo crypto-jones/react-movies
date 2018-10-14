@@ -64,9 +64,11 @@ class MovieList extends Component {
           value={this.state.search}
           onChange={this.updateSearch}
         />
-        {this.state.movies.map(movie => (
-          <MovieDetails key={movie.id} movie={movie} />
-        ))}
+        <div className="movie-card-container">
+          {this.state.movies.map(movie => (
+            <MovieDetails key={movie.id} movie={movie} />
+          ))}
+        </div>
       </Fragment>
     );
   }

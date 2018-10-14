@@ -1,4 +1,5 @@
 import React from 'react';
+import TextTruncate from 'react-text-truncate';
 
 const MovieCard = props => {
   const { id, title, overview, poster_path } = props.movie;
@@ -9,8 +10,8 @@ const MovieCard = props => {
         alt="Movie Poster"
       />
       <div className="movie-text">
-        <h2>{title}</h2>
-        <p>{overview}</p>
+        <h2 className="movie-title">{title}</h2>
+        <TextTruncate line={5} truncateText="..." text={overview} />
       </div>
     </ul>
   );
