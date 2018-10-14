@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import queryString from 'query-string';
 import Header from './Header';
-import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import '../styles/Home.css';
 
@@ -16,7 +15,7 @@ class Home extends Component {
     return (
       <div className="home-container">
         <Header />
-        <SearchBar />
+        {/* <SearchBar /> */}
         <MovieList />
       </div>
     );

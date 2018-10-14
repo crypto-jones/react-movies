@@ -6,7 +6,8 @@ import API_KEY from '../config';
 
 class MovieList extends Component {
   state = {
-    movies: []
+    movies: [],
+    search: ''
   };
 
   componentDidMount() {
@@ -34,6 +35,11 @@ class MovieList extends Component {
 
     return (
       <div>
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search for a movie..."
+        />
         {this.state.movies.map(movie => (
           <ul className="movie-card" key={movie.id}>
             <img
