@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/MovieList.css';
 
 // Create your own API Key at https://developers.themoviedb.org/3/getting-started
-import API_KEY from '../config';
+// import API_KEY from '../config'; // Uncomment in Development
 
 class MovieList extends Component {
   state = {
