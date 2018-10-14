@@ -15,6 +15,11 @@
   padding: 10px;
 }
 
+.movie-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
 .movie-text {
   width: 300px;
   height: 200px;
@@ -43,6 +48,8 @@
 
   .movie-title {
     text-align: center;
+    font-size: 1.1rem;
+    margin-top: 5px;
   }
 
   .movie-text {

@@ -3,6 +3,10 @@
   max-width: 600px;
 }
 
+.movie-poster {
+  margin-bottom: 10px;
+}
+
 .movie-details {
   font-size: 1.2rem;
   font-weight: 500;

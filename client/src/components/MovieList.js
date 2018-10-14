@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import MovieCard from './MovieCard';
+import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/MovieList.css';
 
 // Create your own API Key at https://developers.themoviedb.org/3/getting-started
@@ -20,6 +22,10 @@ class MovieList extends Component {
   updateSearch = e => {
     this.setState({ search: e.target.value });
     this.searchMovies();
+  };
+
+  handleSubmit = () => {
+    window.location.href = '/';
   };
 
   filterMovies = () => {
@@ -91,6 +97,11 @@ class MovieList extends Component {
             value={this.state.search}
             onChange={this.updateSearch}
           />
+          <br />
+          <Button outline color="info" onClick={this.handleSubmit}>
+            Reset
+          </Button>
+
           <div className="movie-card-container">
             {this.state.suggestions.map(movie => (
               <MovieDetails key={movie.id} movie={movie} />
