@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/MovieList.css';
 
 // Create your own API Key at https://developers.themoviedb.org/3/getting-started
 import API_KEY from '../config';
@@ -30,10 +31,20 @@ class MovieList extends Component {
     if (!this.state.movies) {
       return <div>Loading movies...</div>;
     }
+
     return (
       <div>
         {this.state.movies.map(movie => (
-          <ul key={movie.id}>{movie.title}</ul>
+          <ul className="movie-card" key={movie.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+              alt="Movie Poster"
+            />
+            <div className="movie-text">
+              <h2>{movie.title}</h2>
+              <p>{movie.overview}</p>
+            </div>
+          </ul>
         ))}
       </div>
     );

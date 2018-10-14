@@ -1,0 +1,13 @@
+.movie-card {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  border: 1px solid white;
+  padding: 0;
+}
+
+.movie-text {
+  max-width: 600px;
+  padding: 0 20px;
+  text-align: left;
+}
