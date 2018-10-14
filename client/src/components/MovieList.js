@@ -18,15 +18,12 @@ class MovieList extends Component {
   }
 
   updateSearch = e => {
-    if (e.target.value.length < this.state.search.length) {
-      this.fetchMovies();
-    }
     this.setState({ search: e.target.value });
-    this.filterMovies();
+    this.searchMovies();
   };
 
   filterMovies = () => {
-    let filter = this.state.movies.filter(movie => {
+    let filter = this.state.suggestions.filter(movie => {
       if (
         movie.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
         -1
@@ -34,46 +31,38 @@ class MovieList extends Component {
         return true;
       }
     });
-    this.setState({ movies: filter });
+    this.setState({ suggestions: filter });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({ search: '' });
+  searchMovies = () => {
+    const trimmed = this.state.search.trim();
+
+    if (trimmed.length > 0) {
+      let url = `https://api.themoviedb.org/3/search/movie?query=${trimmed}&api_key=${API_KEY}`;
+      console.log(url);
+      fetch(url)
+        .then(response => response.json())
+        .then(json => json.results)
+        .then(data => {
+          const results = data.map(movie => {
+            let temp = {};
+            temp.id = movie.id;
+            temp.title = movie.title;
+            temp.overview = movie.overview;
+            temp.poster_path = movie.poster_path;
+            return temp;
+          });
+          this.setState({
+            suggestions: results
+          });
+        })
+        .catch(error => console.log('Cannot get suggested movies.'));
+    } else {
+      this.setState({
+        suggestions: []
+      });
+    }
   };
-
-  // searchMovies = () => {
-  //   const trimmedValue = this.state.search.trim();
-
-  //   if (trimmedValue.length > 0) {
-  //     let url = `https://api.themoviedb.org/3/search/movie?query=${trimmedValue}&api_key=${API_KEY}`;
-  //     fetch(url)
-  //       .then(response => response.json())
-  //       .then(json => json.results)
-  //       .then(data => {
-  //         const results = data.map(movie => {
-  //           let temp = {};
-  //           temp.id = movie.id;
-  //           temp.title = movie.title;
-  //           temp.overview = movie.overview;
-  //           temp.img = movie.poster_path;
-  //         });
-  //         this.setState({
-  //           suggestions: results
-  //         });
-  //         console.log(this.state.suggestions);
-  //       })
-  //       // .then(data => {
-  //       //   this.setState({ suggestions: data.results });
-  //       //   console.log(this.state.suggestions);
-  //       // })
-  //       .catch(error => console.log('Cannot get suggestions.'));
-  //   } else {
-  //     this.setState({
-  //       suggestions: []
-  //     });
-  //   }
-  // };
 
   fetchMovies() {
     fetch(
@@ -82,7 +71,6 @@ class MovieList extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({ movies: data.results });
-        console.log(this.state.movies);
       })
       .catch(error => {
         console.log(error);
@@ -92,7 +80,8 @@ class MovieList extends Component {
   render() {
     if (!this.state.movies) {
       return <div>Loading movies...</div>;
-    } else if (this.state.suggestions.length > 1) {
+    }
+    if (this.state.suggestions.length > 0) {
       return (
         <Fragment>
           <input
@@ -101,7 +90,6 @@ class MovieList extends Component {
             placeholder="Search movie by title..."
             value={this.state.search}
             onChange={this.updateSearch}
-            onClick={this.searchMovies}
           />
           <div className="movie-card-container">
             {this.state.suggestions.map(movie => (
@@ -119,7 +107,6 @@ class MovieList extends Component {
             placeholder="Search movie by title..."
             value={this.state.search}
             onChange={this.updateSearch}
-            onClick={this.searchMovies}
           />
           <div className="movie-card-container">
             {this.state.movies.map(movie => (
