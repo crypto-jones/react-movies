@@ -87,7 +87,7 @@ class MovieList extends Component {
     if (!this.state.movies) {
       return <div>Loading movies...</div>;
     }
-    if (this.state.suggestions.length > 0) {
+    if (this.state.search.length > 1) {
       return (
         <Fragment>
           <input
@@ -98,7 +98,7 @@ class MovieList extends Component {
             onChange={this.updateSearch}
           />
           <br />
-          <Button outline color="info" onClick={this.handleSubmit}>
+          <Button outline color="info" size="sm" onClick={this.handleSubmit}>
             Reset
           </Button>
 

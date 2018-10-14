@@ -55,4 +55,9 @@
   .movie-text {
     font-size: 0.8rem;
   }
+
+  .search-bar {
+    font-size: 0.7rem;
+    padding: 6px;
+  }
 }
