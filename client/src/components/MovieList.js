@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import MovieCard from './MovieCard';
 import '../styles/MovieList.css';
 
 // Create your own API Key at https://developers.themoviedb.org/3/getting-started
@@ -13,6 +15,26 @@ class MovieList extends Component {
   componentDidMount() {
     this.fetchMovies();
   }
+
+  updateSearch = e => {
+    if (e.target.value.length < this.state.search.length) {
+      this.fetchMovies();
+    }
+    this.setState({ search: e.target.value });
+    this.filterMovies();
+  };
+
+  filterMovies = () => {
+    let filter = this.state.movies.filter(movie => {
+      if (
+        movie.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
+        -1
+      ) {
+        return true;
+      }
+    });
+    this.setState({ movies: filter });
+  };
 
   fetchMovies() {
     fetch(
@@ -34,27 +56,31 @@ class MovieList extends Component {
     }
 
     return (
-      <div>
+      <Fragment>
         <input
           className="search-bar"
           type="text"
-          placeholder="Search for a movie..."
+          placeholder="Search movie by title..."
+          value={this.state.search}
+          onChange={this.updateSearch}
         />
         {this.state.movies.map(movie => (
-          <ul className="movie-card" key={movie.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
-              alt="Movie Poster"
-            />
-            <div className="movie-text">
-              <h2>{movie.title}</h2>
-              <p>{movie.overview}</p>
-            </div>
-          </ul>
+          <MovieDetails key={movie.id} movie={movie} />
         ))}
-      </div>
+      </Fragment>
     );
   }
+}
+
+function MovieDetails({ movie }) {
+  return (
+    <Link
+      to={`/movies/${movie.id}`}
+      style={{ textDecoration: 'none', color: 'white' }}
+    >
+      <MovieCard movie={movie} />
+    </Link>
+  );
 }
 
 export default MovieList;

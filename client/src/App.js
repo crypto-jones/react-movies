@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Home from './components/Home';
+import Movie from './components/Movie';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,12 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/" component={Home} />
+        <Route
+          path="/movies/:id"
+          render={props => {
+            return <Movie {...props} />;
+          }}
+        />
       </div>
     );
   }

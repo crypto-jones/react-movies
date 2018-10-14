@@ -7,13 +7,13 @@
 }
 
 .movie-text {
-  max-width: 600px;
+  max-width: 500px;
   padding: 0 20px;
   text-align: left;
 }
 
 .search-bar {
-  width: 97.8%;
+  width: 97.7%;
   font-size: 1rem;
   padding: 8px;
 }
