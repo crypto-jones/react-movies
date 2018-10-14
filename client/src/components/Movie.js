@@ -4,6 +4,9 @@ import '../styles/Movie.css';
 // Create your own API Key at https://developers.themoviedb.org/3/getting-started
 import API_KEY from '../config';
 
+const noImage =
+  'https://vignette.wikia.nocookie.net/bakemonogatari1645/images/2/26/No-cover-placeholder.png/revision/latest?cb=20171227065818';
+
 class Movie extends Component {
   state = {
     title: [],
@@ -50,6 +53,10 @@ class Movie extends Component {
           alt="Movie Poster"
           style={{ border: '1.5px solid white' }}
           className="movie-poster"
+          onError={e => {
+            e.target.onerror = null;
+            e.target.src = noImage;
+          }}
         />
         <p>
           <span className="movie-details">Release Date:</span>{' '}
