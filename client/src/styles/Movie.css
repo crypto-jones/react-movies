@@ -16,3 +16,18 @@
   text-align: left;
   padding: 0 10px;
 }
+
+@media only screen and (max-width: 500px) {
+  .movie-poster {
+    width: 80%;
+  }
+
+  .movie-details {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .overview {
+    font-size: 1.2rem;
+  }
+}

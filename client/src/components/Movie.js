@@ -49,6 +49,7 @@ class Movie extends Component {
           src={`https://image.tmdb.org/t/p/w400/${this.state.poster}`}
           alt="Movie Poster"
           style={{ border: '1.5px solid white' }}
+          className="movie-poster"
         />
         <p>
           <span className="movie-details">Release Date:</span>{' '}

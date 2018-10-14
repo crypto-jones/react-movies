@@ -10,7 +10,7 @@ const Header = () => {
       className="header"
       style={{ textDecoration: 'none', color: 'white' }}
     >
-      <img width="80" src={logo} alt="logo" />
+      <img width="80" src={logo} alt="logo" className="db-logo" />
       <h2 className="title">React Movies</h2>
     </Link>
   );
