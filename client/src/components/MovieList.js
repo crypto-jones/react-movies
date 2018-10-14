@@ -108,6 +108,7 @@ class MovieList extends Component {
             value={this.state.search}
             onChange={this.updateSearch}
           />
+          <h3 className="trending">Trending Now</h3>
           <div className="movie-card-container">
             {this.state.movies.map(movie => (
               <MovieDetails key={movie.id} movie={movie} />
