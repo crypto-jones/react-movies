@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Movie.css';
 
 // Create your own API Key at https://developers.themoviedb.org/3/getting-started
-import API_KEY from '../config';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const noImage =
   'https://vignette.wikia.nocookie.net/bakemonogatari1645/images/2/26/No-cover-placeholder.png/revision/latest?cb=20171227065818';

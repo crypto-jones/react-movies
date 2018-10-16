@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/MovieList.css';
 
 // Create your own API Key at https://developers.themoviedb.org/3/getting-started
-// import API_KEY from '../config';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class MovieList extends Component {
