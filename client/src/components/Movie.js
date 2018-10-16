@@ -59,7 +59,6 @@ class Movie extends Component {
         this.setState({
           video: results[0]
         });
-        console.log('Video', this.state.video);
       })
       .catch(error => {
         console.error(error);
