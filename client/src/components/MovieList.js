@@ -23,10 +23,6 @@ class MovieList extends Component {
     this.setState({ search: e.target.value }, () => this.searchMovies());
   };
 
-  handleSubmit = () => {
-    window.location.href = '/';
-  };
-
   filterMovies = () => {
     let filter = this.state.suggestions.filter(movie => {
       if (
@@ -97,11 +93,6 @@ class MovieList extends Component {
             value={this.state.search}
             onChange={this.updateSearch}
           />
-          <br />
-          <Button outline color="info" size="sm" onClick={this.handleSubmit}>
-            Reset
-          </Button>
-
           <div className="movie-card-container">
             {this.state.suggestions.map(movie => (
               <MovieDetails key={movie.id} movie={movie} />
