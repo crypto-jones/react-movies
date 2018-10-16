@@ -20,8 +20,7 @@ class MovieList extends Component {
   }
 
   updateSearch = e => {
-    this.setState({ search: e.target.value });
-    this.searchMovies();
+    this.setState({ search: e.target.value }, () => this.searchMovies());
   };
 
   handleSubmit = () => {
@@ -45,7 +44,7 @@ class MovieList extends Component {
 
     if (trimmed.length > 0) {
       let url = `https://api.themoviedb.org/3/search/movie?query=${trimmed}&api_key=${API_KEY}`;
-      console.log(url);
+      // console.log(url);
       fetch(url)
         .then(response => response.json())
         .then(json => json.results)
@@ -61,6 +60,7 @@ class MovieList extends Component {
           this.setState({
             suggestions: results
           });
+          this.searchMovies();
         })
         .catch(error => console.log('Cannot get suggested movies.'));
     } else {
@@ -87,7 +87,7 @@ class MovieList extends Component {
     if (!this.state.movies) {
       return <div>Loading movies...</div>;
     }
-    if (this.state.search.length > 1) {
+    if (this.state.search.length > 0) {
       return (
         <Fragment>
           <input
